@@ -30,7 +30,7 @@
 
 enum sol_layers {
     _QWERTY,
-    _COLEMAK,
+    _SPECIAL,
     _GAME,
     _FN,
     _ADJUST
@@ -56,19 +56,109 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_F12] = ACTION_TAP_DANCE_DOUBLE(KC_F12, LCTL(KC_F12)),
 };
 
-// Combos
-const uint16_t PROGMEM test_combo1[] = {KC_D, KC_F, COMBO_END};
+// Two Key Combos
+const uint16_t PROGMEM FD_CTRL[] = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM JK_CTRL[] = {KC_J, KC_K, COMBO_END};
+
+const uint16_t PROGMEM FS_ALT[] = {KC_F, KC_S, COMBO_END};
+const uint16_t PROGMEM JL_ALT[] = {KC_J, KC_L, COMBO_END};
+
+const uint16_t PROGMEM FA_WIN[] = {KC_F, KC_A, COMBO_END};
+const uint16_t PROGMEM JSEMI_WIN[] = {KC_J, KC_SEMICOLON, COMBO_END};
+
+// Tree Key Combos
+const uint16_t PROGMEM FDS_CTRL_ALT[] = {KC_F,KC_D , KC_S,  COMBO_END};
+const uint16_t PROGMEM JKL_CTRL_ALT[] = {KC_J,KC_K , KC_L, COMBO_END};
+
+const uint16_t PROGMEM FDA_CTRL_WIN[] = {KC_F,KC_D , KC_A,  COMBO_END};
+const uint16_t PROGMEM JKSEMI_CTRL_WIN[] = {KC_J,KC_K , KC_SEMICOLON, COMBO_END};
+
+const uint16_t PROGMEM FSA_ALT_WIN[] = {KC_F,KC_S , KC_A,  COMBO_END};
+const uint16_t PROGMEM JLSEMI_ALT_WIN[] = {KC_J,KC_L , KC_SEMICOLON, COMBO_END};
+
+const uint16_t PROGMEM FDSPACE_CTRL[] = {KC_F, KC_D, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JKSPACE_CTRL[] = {KC_J, KC_K, KC_SPACE, COMBO_END};
+
+const uint16_t PROGMEM FSSPACE_ALT[] = {KC_F, KC_S, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JLSPACE_ALT[] = {KC_J, KC_L, KC_SPACE, COMBO_END};
+
+const uint16_t PROGMEM FASPACE_WIN[] = {KC_F, KC_A, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JSEMISPACE_WIN[] = {KC_J, KC_SEMICOLON, KC_SPACE, COMBO_END};
+
+// Four Key Combos
+const uint16_t PROGMEM FDSA_CTRL_ALT_WIN[] = {KC_F, KC_D, KC_S , KC_A,  COMBO_END};
+const uint16_t PROGMEM JKLSEMI_CTRL_ALT_WIN[] = {KC_J,KC_K, KC_L , KC_SEMICOLON, COMBO_END};
+
+const uint16_t PROGMEM FDSSPACE_CTRL_ALT[] = {KC_F,KC_D , KC_S, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JKLSPACE_CTRL_ALT[] = {KC_J,KC_K , KC_L, KC_SPACE, COMBO_END};
+
+const uint16_t PROGMEM FDASPACE_CTRL_WIN[] = {KC_F,KC_D , KC_A, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JKSEMISPACE_CTRL_WIN[] = {KC_J,KC_K , KC_SEMICOLON,KC_SPACE,  COMBO_END};
+
+const uint16_t PROGMEM FSASPACE_ALT_WIN[] = {KC_F,KC_S , KC_A, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JLSEMISPACE_ALT_WIN[] = {KC_J,KC_L , KC_SEMICOLON, KC_SPACE, COMBO_END};
+
+// Five Key Combos
+const uint16_t PROGMEM FDSASPACE_CTRL_ALT_WIN[] = {KC_F, KC_D, KC_S , KC_A, KC_SPACE, COMBO_END};
+const uint16_t PROGMEM JKLSEMISPACE_CTRL_ALT_WIN[] = {KC_J,KC_K, KC_L , KC_SEMICOLON, KC_SPACE, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(test_combo1, KC_LEFT_CTRL),
+    // Two Key Combos
+        COMBO(FD_CTRL, KC_LEFT_CTRL),
+        COMBO(JK_CTRL, KC_RIGHT_CTRL),
+
+        COMBO(FS_ALT, KC_LEFT_ALT),
+        COMBO(JL_ALT, KC_LEFT_ALT),
+
+        COMBO(FA_WIN, KC_LEFT_GUI),
+        COMBO(JSEMI_WIN, KC_RIGHT_GUI),
+    // Tree Key Combos
+        COMBO(FDS_CTRL_ALT, LALT(KC_LEFT_CTRL)),
+        COMBO(JKL_CTRL_ALT, LALT(KC_RIGHT_CTRL)),
+
+        COMBO(FDA_CTRL_WIN, LGUI(KC_RIGHT_CTRL)),
+        COMBO(JKSEMI_CTRL_WIN, LGUI(KC_RIGHT_CTRL)),
+
+        COMBO(FSA_ALT_WIN, LALT(KC_LEFT_GUI)),
+        COMBO(JLSEMI_ALT_WIN, LALT(KC_LEFT_GUI)),
+
+        COMBO(FDSPACE_CTRL, LSFT(KC_LEFT_CTRL)),
+        COMBO(JKSPACE_CTRL, RSFT(KC_RIGHT_CTRL)),
+
+        COMBO(FSSPACE_ALT, LSFT(KC_LEFT_ALT)),
+        COMBO(JLSPACE_ALT, RSFT(KC_LEFT_ALT)),
+
+        COMBO(FASPACE_WIN, LSFT(KC_LEFT_GUI)),
+        COMBO(JSEMISPACE_WIN, RSFT(KC_RIGHT_GUI)),
+
+    // Four Key Combos
+
+        COMBO(FDSA_CTRL_ALT_WIN, LALT(LGUI(KC_LEFT_CTRL))),
+        COMBO(JKLSEMI_CTRL_ALT_WIN, LALT(LGUI(KC_RIGHT_CTRL))),
+
+        COMBO(FDSSPACE_CTRL_ALT, LSFT(LALT(KC_LEFT_CTRL))),
+        COMBO(JKLSPACE_CTRL_ALT, RSFT(LALT(KC_RIGHT_CTRL))),
+
+        COMBO(FDASPACE_CTRL_WIN, LSFT(LGUI(KC_RIGHT_CTRL))),
+        COMBO(JKSEMISPACE_CTRL_WIN, RSFT(LGUI(KC_RIGHT_CTRL))),
+
+        COMBO(FSASPACE_ALT_WIN, LSFT(LALT(KC_LEFT_GUI))),
+        COMBO(JLSEMISPACE_ALT_WIN, RSFT(LALT(KC_LEFT_GUI))),
+    // Five Key Combos
+        COMBO(FDSASPACE_CTRL_ALT_WIN, LSFT(LALT(LGUI(KC_LEFT_CTRL)))),
+        COMBO(JKLSEMISPACE_CTRL_ALT_WIN, RSFT(LALT(LGUI(KC_RIGHT_CTRL)))),
+
+    
 };
 
 #define FN       MO(_FN)
 #define ADJUST   MO(_ADJUST)
-#define COLEMAK  DF(_COLEMAK)
+#define SPECIAL  LT(_SPECIAL)
 #define GAME     DF(_GAME)
 #define QWERTY   DF(_QWERTY)
-#define FN_CAPS  LT(_FN, KC_CAPS)
+#define FN_CAPS  LT(_FN, QK_CAPS_WORD_TOGGLE)
+#define SPECIAL_BSPC LT(_SPECIAL, KC_BSPC)
+#define SPECIAL_DEL LT(_SPECIAL, KC_DEL)
 //#define RGB_ADJ  LT(_ADJUST, RGB_TOG)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -78,19 +168,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    TD(TD_F12),                      KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
         FN_CAPS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_LPRN,                         KC_RPRN, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         SC_SENT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    LALT(KC_ENTER),                  KC_RCBR, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_SENT,
-        KC_LCTL,  KC_LGUI, KC_LALT, KC_LEFT, KC_RIGHT,  KC_SPC,  KC_HOME, KC_BSPC,           KC_DEL,  KC_END, KC_SPC,  KC_DOWN, KC_UP, KC_RALT, ADJUST, KC_RCTL,
+        KC_LCTL,  KC_LGUI, KC_LALT, KC_LEFT, KC_RIGHT,  KC_SPC,  KC_HOME, SPECIAL_BSPC,   SPECIAL_DEL,  KC_END, KC_SPC,  KC_DOWN, KC_UP, KC_RALT, ADJUST, KC_RCTL,
 
         KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                                       KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV
     ),
 
-    [_COLEMAK] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, _______,
-        _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    _______,                   _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
-        _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    _______,                   _______, KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    _______,
-        _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______,                   _______, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    [_SPECIAL] = LAYOUT(
+        _______, _______, _______, _______              , _______                   , _______          , _______,                   _______, _______, _______, _______, _______, _______, _______,
+        _______, KC_Q,LSFT(KC_MINUS), KC_LEFT_BRACKET      , KC_RIGHT_BRACKET       , KC_EQUAL         , _______,                   _______, _______, KC_P7,   KC_P8,   KC_P9,    KC_SCLN, _______,
+        _______, KC_A,    KC_GRAVE  , LSFT(KC_LEFT_BRACKET), LSFT(KC_RIGHT_BRACKET) , KC_MINUS         , _______,                   _______, _______, KC_P4,   KC_P5,   KC_P6,    KC_O,    _______,
+        _______, KC_Z,LSFT(KC_GRAVE), LSFT(KC_COMMA)       , LSFT(KC_DOT)           , LSFT(KC_EQUAL)   , _______,                   _______, _______, KC_P1,   KC_P2,   KC_P3,  KC_SLSH, _______,
+        _______, _______, _______, _______              , _______                   , _______          , _______, _______, _______, _______, _______, KC_P0,   KC_PDOT, KC_NUM, _______, _______,
 
-        _______, _______, _______, _______, _______,                                                       _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______,                                                       KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV
     ),
 
     [_GAME] = LAYOUT(
@@ -115,10 +205,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ADJUST] = LAYOUT(
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,                    KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-        _______, RGB_SAD, RGB_VAI, RGB_SAI, QK_BOOT,   _______, _______,                   _______, _______, KC_P7,   KC_P8,   KC_P9,   _______, _______,
-        _______, RGB_HUD, RGB_VAD, RGB_HUI, RGB_RST, _______, DM_REC1,                   _______, _______, KC_P4,   KC_P5,   KC_P6,   _______, _______,
-        _______, RGB_SPD, _______, RGB_SPI, _______, _______, DM_RSTP,                   _______, _______, KC_P1,   KC_P2,   KC_P3,   _______, GAME,
-        _______, RGB_RMOD,RGB_TOG, RGB_MOD, _______, _______, _______, _______, _______, _______, _______, KC_P0,   KC_PDOT, KC_NUM,  QWERTY,  COLEMAK,
+        _______, RGB_SAD, RGB_VAI, RGB_SAI, QK_BOOT,   _______, _______,                   _______, _______, _______, _______, _______,   _______, _______,
+        _______, RGB_HUD, RGB_VAD, RGB_HUI, RGB_RST, _______, DM_REC1,                   _______, _______,   _______, _______, _______,   _______, _______,
+        _______, RGB_SPD, _______, RGB_SPI, _______, _______, DM_RSTP,                   _______, _______,   AU_TOGG, MU_TOGG, MU_NEXT,   _______, GAME,
+        _______, RGB_RMOD,RGB_TOG, RGB_MOD, _______, _______, _______, _______, _______, _______, _______,   CK_TOGG,   CK_UP, CK_DOWN,  QWERTY,  _______,
 
         _______, _______, _______, _______, _______,                                                       _______, _______, _______, _______, _______
     ),
@@ -165,7 +255,7 @@ void render_layer_status(void) {
         case _QWERTY:
             oled_write_ln_P(PSTR("QWRTY"), false);
             break;
-        case _COLEMAK:
+        case _SPECIAL:
             oled_write_ln_P(PSTR("Colemk"), false);
             break;
         case _GAME:
